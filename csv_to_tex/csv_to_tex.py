@@ -4,29 +4,37 @@ import argparse
 import csv
 
 
-def csv_to_tex(filename):
+def csv_to_lst(filename, delim):
 
-    max_col = 0
+    txt_lst = list()
+
+    with open(filename, 'r', encoding='utf-8', newline='') as fin:
+        
+        txt_it = csv.reader(fin, delimiter=delim)
+        for string in txt_it:
+            txt_lst.append(string)
+
+    return txt_lst
+
+
+def lst_to_tex(lst):
+
+    col_n = 0
     body = ''
 
-    with open(filename, 'r', encoding='utf-8') as fin:
-        
-        txt_lst = csv.reader(fin)
+    for line in lst:
 
-        for string in txt_lst:
+        line_len = len(line)
+        col_n = line_len if line_len > col_n else col_n
 
-            length = len(string)
+    for line in lst:
 
-            max_col = length if length > max_col else max_col
+        for idx, word in enumerate(line, 1):
+            body += str(word) + (' & ' if idx != col_n else '')
 
-            for idx, col in enumerate(string, 1):
-                body += str(col)
-                body += ' & ' if idx != length else ' \\\\'
+        body += '&' * (col_n - len(line) - 1) + '\\\\\n\\hline\n'
 
-            body += '\n\\hline\n'
-
-    columns = ' '.join('| c' for i in range(max_col))
-    columns += ' | '
+    columns = ' '.join('| c' for i in range(col_n)) + ' |'
 
     header = f'\\begin{{tabular}}{{{columns}}}\n\\hline\n'
     footer = '\\end{tabular}\n'
@@ -40,12 +48,15 @@ def main():
     parser.add_argument('in_f', metavar='INPUT', type=str, help='input file in csv format')
     parser.add_argument('out_f', metavar='OUTPUT', type=str, help='output file in tex format')
 
+    parser.add_argument('-d', '--delim', type=str, default=',', help='parsing delimeter')
+
     args = parser.parse_args()
  
-    txt = csv_to_tex(args.in_f)
+    lst = csv_to_lst(args.in_f, args.delim)
+    tex = lst_to_tex(lst)
 
     with open(args.out_f, 'w', encoding='utf-8') as fout:
-        fout.write(txt)
+        fout.write(tex)
 
 
 if __name__ == '__main__':

@@ -10,15 +10,18 @@ Management recommendations:
 
 ## csv_to_tex
 Converter from table in ```CSV``` format to ```tex``` code.
-Usage:
+**Usage**:
 * Change script file rights:
   ```bash
   $ sudo chmod +x csv_to_tex.py
   ```
 * Run:
   ```bash
-  $ ./csv_to_tex.py source_file.csv dest_file.tex
+  $ ./ctx.sh [OPTIONS] source_file.csv dest_file.tex
   ```
+Availible options: 
+* ```-h```, ```--help``` - show help message and exit.
+* ```-d DELIM```, ```--delim DELIM``` - use ```DELIM``` as column delimeter.
 
 ## graph_on_py
 Directory for graphics builder on Python.
