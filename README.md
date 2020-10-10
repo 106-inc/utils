@@ -20,6 +20,9 @@ Usage by using bash-script ```ctx.sh```
   ```bash
   $ ./ctx.sh [OPTIONS] source_file.csv dest_file.tex
   ```
+Availible options: 
+* ```-h```, ```--help``` - show help message and exit.
+* ```-d DELIM```, ```--delim DELIM``` - use ```DELIM``` as column delimeter.
 
 ## graph_on_py
 Directory for graphics builder on Python.
