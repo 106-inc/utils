@@ -1,6 +1,12 @@
 # Utils
 Some helpful utilities.
 
+This repository created by Tako-San, AD6 and Uslsteen. 
+
+Management recommendations:
+1) Try to work in your personal branch.
+2) Dont commit in master raw version of your scripts. 
+
 ## csv_to_tex
 Converter from table in ```CSV``` format to ```tex``` code.
 Usage:
