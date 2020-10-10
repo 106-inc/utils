@@ -1,7 +1,7 @@
 # Utils
 Some helpful utilities.
 
-This repository created by Tako-San, AD6 and Uslsteen. 
+This repository created by Tako-San, Derzhavin3016 and Uslsteen. 
 
 Management recommendations:
 * One project - one branch.
