@@ -18,7 +18,7 @@ Converter from table in ```CSV``` format to ```tex``` code.
   ```
 * Run:
   ```bash
-  $ ./ctx.sh [OPTIONS] source_file.csv dest_file.tex
+  $ ./csv_to_tex.py [OPTIONS] source_file.csv dest_file.tex
   ```
 **Availible options**: 
 * ```-h```, ```--help``` - show help message and exit.
