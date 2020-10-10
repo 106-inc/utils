@@ -11,8 +11,17 @@ Management recommendations:
 ## csv_to_tex
 Converter from table in ```CSV``` format to ```tex``` code.
 Usage:
-```
+```bash
 python3 table_rdr.py source_file.csv dest_file.tex
+```
+Usage by using bash-script ```ctx.sh```
+* Change script file rights:
+  ```bash
+  sudo chmod +x ctx.sh
+  ```
+* Run:
+```bash
+./ctx.sh source_file.csv dest_file.tex
 ```
 
 ## graph_on_py
