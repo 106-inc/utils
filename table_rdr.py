@@ -21,13 +21,13 @@ def csv_to_tex(filename):
                 body += str(col)
                 body += ' & ' if idx != length else ' \\\\'
 
-            body += '\n'
+            body += '\n\\hline\n'
 
-    columns = ' '.join('| 1' for i in range(max_col))
+    columns = ' '.join('| c' for i in range(max_col))
     columns += ' | '
 
-    header = f'\\begin{{tabular}}{{{columns}}}\n'
-    footer = '\\end{tabular}'
+    header = f'\\begin{{tabular}}{{{columns}}}\n\\hline\n'
+    footer = '\\end{tabular}\n'
 
     return header + body + footer
 
@@ -38,13 +38,10 @@ def main():
     parser.add_argument('out_f', metavar='OUTPUT', type=str, help='output file in tex format')
 
     args = parser.parse_args()
-
-    file_in = args.in_f
-    file_out = args.out_f
  
-    txt = csv_to_tex(file_in)
+    txt = csv_to_tex(args.in_f)
 
-    with open(file_out, 'w', encoding='utf-8') as fout:
+    with open(args.out_f, 'w', encoding='utf-8') as fout:
         fout.write(txt)
 
 
