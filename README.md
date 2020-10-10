@@ -4,8 +4,9 @@ Some helpful utilities.
 This repository created by Tako-San, AD6 and Uslsteen. 
 
 Management recommendations:
-1. Try to work in your personal branch.
-2. Dont commit in master raw version of your scripts. 
+* One project -- one branch.
+* If you work on some feature -- also create branch.
+* Remember, ```master``` only for **RELEASE** versions. 
 
 ## csv_to_tex
 Converter from table in ```CSV``` format to ```tex``` code.
@@ -18,4 +19,4 @@ python3 table_rdr.py source_file.csv dest_file.tex
 Directory for graphics builder on Python.
 
 ### graph_2_y_axs 
-Graph builder with two y-axes on one plane
+Graph builder with two y-axes on one plane.
