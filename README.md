@@ -1,7 +1,7 @@
 # Utils
 Some helpful utilities.
 
-## "table_rdr"
+## table_rdr
 Converter from table in ```CSV``` format to ```tex``` code.
 Usage:
 ```
