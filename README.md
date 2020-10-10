@@ -11,5 +11,5 @@ python3 table_rdr.py source_file.csv dest_file.tex
 ## graph_on_py
 Directory for graphics builder on Python.
 
-### graph_2_y_axs - graph builder with two y-axes on one plane
-
+### graph_2_y_axs 
+Graph builder with two y-axes on one plane
