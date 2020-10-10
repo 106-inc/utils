@@ -33,7 +33,9 @@ def csv_to_tex(filename):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Hi')
+    parser = argparse.ArgumentParser(description='Hi! This is table_rdr v 1.0\n\
+                                                  (c) Tako-San && derzhavin3016\n\
+                                                  Transform csv table to LaTeX code\n\n')
     parser.add_argument('in_f', metavar='INPUT', type=str, help='input file in csv format')
     parser.add_argument('out_f', metavar='OUTPUT', type=str, help='output file in tex format')
 
