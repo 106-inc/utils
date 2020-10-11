@@ -7,6 +7,7 @@ Management recommendations:
 * One project - one branch.
 * If you work on some feature - also create branch.
 * Remember, ```master``` only for **RELEASE** versions. 
+* Do ```git pull``` before work.
 
 ## csv_to_tex
 Converter from table in ```CSV``` format to ```tex``` code.
