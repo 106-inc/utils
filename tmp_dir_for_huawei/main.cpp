@@ -120,7 +120,7 @@ public:
                     m_insn = LHU;
                     break;
                 default:
-                    // unknown
+                    std::cout << "Unknown command\n";
             }
         }
 
@@ -128,16 +128,26 @@ public:
         {
             m_imm = (GetBits<31, 20>(wrd) << 5) | GetBits<11,7>(wrd);
 
-            if (funct3 == 0x00)
-              m_insn = BEQ;
-            if (funct3 == 0x01)
-              m_insn = BNE;
-            if (funct3 == 0x04)
-              m_insn = BLT;
-            if (funct3 == 0x05)
-              m_insn = BGE;
-            if (funct3 == 0x06)
-              m_insn = BLTU;
+            switch (funct3)
+            {
+                case 0x00:
+                    m_insn = BEQ;
+                    break;
+                case 0x01:
+                    m_insn = BNE;
+                    break;
+                case 0x04:
+                    m_insn = BNE;
+                    break;
+                case 0x05:
+                    m_insn = BGE;
+                    break;
+                case 0x06:
+                    m_insn = BLTU;
+                    break;
+                default:
+                    std::cout << "Unknown command\n";
+            }
         }
 
         if (GetBits<6, 0>(wrd) == 0x13)
@@ -164,7 +174,7 @@ public:
                 case 0x06:
                     m_insn = ANDI;
                 default:
-                    // unknown
+                    std::cout << "Unknown command\n";
             }
         }
     }
