@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <iostream>
 #include <vector>
+#include <map>
 
 typedef Word uint_32_t;
 typedef RegVal uint32_t;
@@ -42,22 +43,38 @@ enum InsnId
 
 class Instruction
 {
-    RegId m_rs1 {};
-    RegId m_rs2 {};
-    RegId m_rd {};
-    Word m_imm {};
-    InsnId m_insn {kInvalidId};
-    bool m_branch {};
+    RegId m_rs1{};
+    RegId m_rs2{};
+    RegId m_rd{};
+    Word m_imm{};
+    InsnId m_insn{kInvalidId};
+    bool m_branch{};
+
+    using do_insn = void(*)(const Instruction &);
+
+    static std::map<InsnId, do_insn> = {
+            {kAdd, ADD}
+    };
 
 public:
-    bool Decode(Word wrd)
+
+    Instruction( )
+    {}
+
+    Instruction( Word wrd )
+    {
+        DecodeAndFillFields(wrd);
+    }
+
+    void DecodeAndFillFields( Word wrd )
     {
 
         if (GetBits<6, 0>(wrd) == 0x33)
         {
             m_rs1 = GetBits<19, 15>(wrd);
-            m_rs2 = GetBits<24,20>(wrd);
+            m_rs2 = GetBits<24, 20>(wrd);
             m_rd = GetBits<11, 7>(wrd);
+
             Word funct3 = GetBits<14,12>(wrd);
             Word funct7 = GetBits<31, 25>(wrd);
 
@@ -104,7 +121,7 @@ public:
             m_rd = GetBits<11, 7>(wrd);
             Word funct3 = GetBits<14,12>(wrd);
             m_imm = GetBits<31, 20>(wrd);
-
+DecodeAndFillFields
             if (funct3 == 0x00)    m_insn = ;//ADDI
             if (funct3 == 0x02)    m_insn = ;//SLTI
             if (funct3 == 0x03)    m_insn = ;//SLTIU
@@ -114,6 +131,12 @@ public:
         }
     }
 
+
+    void exec( Instruction Insn )
+    {
+        InsnMap[m_insn]( Insn );
+    }
+
     RegId rs1() {return m_rs1;}
     RegId rs2() {return m_rs2;}
     RegId rd() {return m_rd;}
@@ -121,6 +144,8 @@ public:
     InsnId insn() {return m_insn;}
     bool branch() {return m_branch;}
 };
+
+
 
 
 class Hart
