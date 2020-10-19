@@ -139,9 +139,9 @@ public:
     }
 
 
-    void exec( Instruction Insn )
+    void exec( )
     {
-        InsnMap[m_insn]( Insn );
+        InsnMap[m_insn]( *this );
     }
 
     const RegId & rs1() const
@@ -226,65 +226,3 @@ void(*InsnExecutor[])(Hart* hart, const Instruction& insn) = {
 
         //! Integer Register - Immediate instr
 
-
-void do_ADDI(Hart* hart, const Instruction& insn)
-{
-
-}
-
-void do_SLTI(Hart* hart, const Instruction& insn)
-{
-
-}
-
-void do_ANDI(Hart* hart, const Instruction& insn)
-{
-
-}
-
-void do_ORI(Hart* hart, const Instruction& insn)
-{
-
-}
-
-void do_XORI(Hart* hart, const Instruction& insn)
-{
-
-}
-
-//! Integer Register - Register operations
-
-void do_ADD(Hart* hart, const Instruction& insn)
-{
-
-}
-
-void do_SUB(Hart* hart, const Instruction& insn)
-{
-
-}
-
-void do_SLT(Hart* hart, const Instruction& insn)
-{
-
-}
-
-void do_SLTU(Hart* hart, const Instruction& insn)
-{
-
-}
-
-void do_AND(Hart* hart, const Instruction& insn)
-{
-
-}
-
-void do_OR(Hart* hart, const Instruction& insn)
-{
-
-}
-
-void do_XOR(Hart* hart, const Instruction& insn)
-{
-
-}
