@@ -26,25 +26,7 @@ enum InsnId
 
   ADD, AND, SLT, SLTU, SUB, AND, OR, XOR,
 
-/*
-  kAdd,
-  kSub,
-  kLb,
-  kLh,
-  kLw,
-  kLbu,
-  kLhu,
-  kSb,
-  kSh,
-  kSw,
-  kBeq,
-  kBne,
-  kBlt,
-  kBge,
-  kBltu,
-  kBgeu,
-  kInvalidId
-*/
+  INV_ID
 };
 
 
@@ -99,10 +81,14 @@ public:
             Word funct3 = GetBits<14,12>(wrd);
             Word funct7 = GetBits<31, 25>(wrd);
 
-            if (funct3 == 0 && funct7 == 0)       m_insn = ;//ADD
-            if (funct3 == 0 && funct7 == 0x20)    m_insn = ;//SUB
-            if (funct3 == 0x3 && funct7 == 0)     m_insn = ;//XOR
-            if (funct3 == 0x5 && funct7 == 0)     m_insn = ;//OR
+            if (funct3 == 0 && funct7 == 0)
+                m_insn = ADD;
+            else if (funct3 == 0 && funct7 == 0x20)
+                m_insn = SUB;
+            else if (funct3 == 0x3 && funct7 == 0)
+                m_insn = XOR;
+            else if (funct3 == 0x5 && funct7 == 0)
+                m_insn = OR;
         }
 
         if (GetBits<6, 0>(wrd) == 0x03)
@@ -142,7 +128,7 @@ public:
             m_rd = GetBits<11, 7>(wrd);
             Word funct3 = GetBits<14,12>(wrd);
             m_imm = GetBits<31, 20>(wrd);
-DecodeAndFillFields
+
             if (funct3 == 0x00)    m_insn = ;//ADDI
             if (funct3 == 0x02)    m_insn = ;//SLTI
             if (funct3 == 0x03)    m_insn = ;//SLTIU
