@@ -213,15 +213,6 @@ void Hart::run()
     }
 }
 
-void(*InsnExecutor[])(Hart* hart, const Instruction& insn) = {
-        add,
-        sub,
-        xor,
-        or,
-        lb,
-        lh,
-        ...};
-
         //! Instructions file of emulator RISC - V !//
 
         //! Integer Register - Immediate instr
