@@ -142,20 +142,30 @@ public:
 
         if (GetBits<6, 0>(wrd) == 0x13)
         {
-          m_imm = GetBits<31, 20>(wrd);
+            m_imm = GetBits<31, 20>(wrd);
 
-            if (funct3 == 0x00)
-                m_insn = ADDI;
-            if (funct3 == 0x02)
-                m_insn = SLTI;
-            if (funct3 == 0x03)
-                m_insn = SLTIU;
-            if (funct3 == 0x04)
-                m_insn = XORI;
-            if (funct3 == 0x05)
-                m_insn = ORI;
-            if (funct3 == 0x06)
-                m_insn = ANDI;
+            switch (funct3)
+            {
+                case 0x00:
+                    m_insn = ADDI;
+                    break;
+                case 0x01:
+                    m_insn = SLTI;
+                    break;
+                case 0x03:
+                    m_insn = SLTIU;
+                    break;
+                case 0x04:
+                    m_insn = XORI;
+                    break;
+                case 0x05:
+                    m_insn = ORI;
+                    break;
+                case 0x06:
+                    m_insn = ANDI;
+                default:
+                    // unknown
+            }
         }
     }
 
