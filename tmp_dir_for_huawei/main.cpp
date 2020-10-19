@@ -102,17 +102,26 @@ public:
         {
             m_imm = GetBits<31, 20>(wrd);
 
-            if (funct3 == 0x00)
-              m_insn = LB;
-            if (funct3 == 0x01)
-              m_insn = LH;
-            if (funct3 == 0x02)
-              m_insn = LW;
-            if (funct3 == 0x04)
-              m_insn = LBU;
-            if (funct3 == 0x05)
-              m_insn = LHU;
-
+            switch (funct3)
+            {
+                case 0x00:
+                    m_insn = LB;
+                    break;
+                case 0x01:
+                    m_insn = LH;
+                    break;
+                case 0x02:
+                    m_insn = LW;
+                    break;
+                case 0x04:
+                    m_insn = LBU;
+                    break;
+                case 0x05:
+                    m_insn = LHU;
+                    break;
+                default:
+                    // unknown
+            }
         }
 
         if (GetBits<6, 0>(wrd) == 0x63)
