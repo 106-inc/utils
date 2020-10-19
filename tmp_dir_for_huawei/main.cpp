@@ -22,9 +22,13 @@ template<> Word SignExtend(Word wrd)
 
 enum InsnId
 {
-  ADDI, ANDI, SLTI, ORI, XORI,
+  ADDI, ANDI, SLTI, ORI, XORI, SLTIU,
 
   ADD, AND, SLT, SLTU, SUB, AND, OR, XOR,
+
+  LB, LH, LW, LBU,
+
+  BEQ, BNE, BLT, BGE, BLTU,
 
   INV_ID
 };
@@ -56,6 +60,8 @@ class Instruction
             {SLTU, do_SLTU},
             {OR, do_OR},
             {XOR, do_XOR},
+
+            //** continued **//
     };
 
 
@@ -71,70 +77,77 @@ public:
 
     void DecodeAndFillFields( Word wrd )
     {
+      m_rs1 = GetBits<19, 15>(wrd);
+      m_rs2 = GetBits<24, 20>(wrd);
+      m_rd = GetBits<11, 7>(wrd);
+      Word funct3 = GetBits<14,12>(wrd);
 
         if (GetBits<6, 0>(wrd) == 0x33)
         {
-            m_rs1 = GetBits<19, 15>(wrd);
-            m_rs2 = GetBits<24, 20>(wrd);
-            m_rd = GetBits<11, 7>(wrd);
-
-            Word funct3 = GetBits<14,12>(wrd);
             Word funct7 = GetBits<31, 25>(wrd);
 
             if (funct3 == 0 && funct7 == 0)
                 m_insn = ADD;
+
             else if (funct3 == 0 && funct7 == 0x20)
                 m_insn = SUB;
+
             else if (funct3 == 0x3 && funct7 == 0)
                 m_insn = XOR;
+
             else if (funct3 == 0x5 && funct7 == 0)
                 m_insn = OR;
         }
 
         if (GetBits<6, 0>(wrd) == 0x03)
         {
-            m_rs1 = GetBits<19, 15>(wrd);
-            m_rd = GetBits<11, 7>(wrd);
-            Word funct3 = GetBits<14,12>(wrd);
             m_imm = GetBits<31, 20>(wrd);
 
-
-            if (funct3 == 0x00)    m_insn = ;//LB
-            if (funct3 == 0x01)    m_insn = ;//LH
-            if (funct3 == 0x02)    m_insn = ;//LW
-            if (funct3 == 0x04)    m_insn = ;//LBU
-            if (funct3 == 0x05)    m_insn = ;//LHU
+            if (funct3 == 0x00)
+              m_insn = LB;
+            if (funct3 == 0x01)
+              m_insn = LH;
+            if (funct3 == 0x02)
+              m_insn = LW;
+            if (funct3 == 0x04)
+              m_insn = LBU;
+            if (funct3 == 0x05)
+              m_insn = LHU;
 
         }
 
         if (GetBits<6, 0>(wrd) == 0x63)
         {
-            m_rs1 = GetBits<19, 15>(wrd);
-            m_rs2 = GetBits<24,20>(wrd);
-            m_rd = GetBits<11, 7>(wrd);
-            Word funct3 = GetBits<14,12>(wrd);
             m_imm = (GetBits<31, 20>(wrd) << 5) | GetBits<11,7>(wrd);
 
-            if (funct3 == 0x00)    m_insn = ;//BEQ
-            if (funct3 == 0x01)    m_insn = ;//BNE
-            if (funct3 == 0x04)    m_insn = ;//BLT
-            if (funct3 == 0x05)    m_insn = ;//BGE
-            if (funct3 == 0x06)    m_insn = ;//BLTU
+            if (funct3 == 0x00)
+              m_insn = BEQ;
+            if (funct3 == 0x01)
+              m_insn = BNE;
+            if (funct3 == 0x04)
+              m_insn = BLT;
+            if (funct3 == 0x05)
+              m_insn = BGE;
+            if (funct3 == 0x06)
+              m_insn = BLTU;
         }
 
         if (GetBits<6, 0>(wrd) == 0x13)
         {
-            m_rs1 = GetBits<19, 15>(wrd);
-            m_rd = GetBits<11, 7>(wrd);
-            Word funct3 = GetBits<14,12>(wrd);
-            m_imm = GetBits<31, 20>(wrd);
+          m_imm = GetBits<31, 20>(wrd);
 
-            if (funct3 == 0x00)    m_insn = ;//ADDI
-            if (funct3 == 0x02)    m_insn = ;//SLTI
-            if (funct3 == 0x03)    m_insn = ;//SLTIU
-            if (funct3 == 0x04)    m_insn = ;//XORI
-            if (funct3 == 0x05)    m_insn = ;//ORI
-            if (funct3 == 0x06)    m_insn = ;//ANDI
+            if (funct3 == 0x00)
+              m_insn = ADDI;
+            if (funct3 == 0x02)
+              m_insn = SLTI;
+            if (funct3 == 0x03)
+              m_insn = SLTIU;
+            if (funct3 == 0x04)
+              m_insn = XORI;
+            if (funct3 == 0x05)
+              m_insn = ORI;
+            if (funct3 == 0x06)
+              m_insn = ANDI;
         }
     }
 
@@ -216,4 +229,3 @@ void Hart::run()
         //! Instructions file of emulator RISC - V !//
 
         //! Integer Register - Immediate instr
-
