@@ -158,12 +158,23 @@ DecodeAndFillFields
         InsnMap[m_insn]( Insn );
     }
 
-    RegId rs1() {return m_rs1;}
-    RegId rs2() {return m_rs2;}
-    RegId rd() {return m_rd;}
-    Word imm() {return m_imm;}
-    InsnId insn() {return m_insn;}
-    bool branch() {return m_branch;}
+    RegId rs1() const
+    { return m_rs1; }
+
+    RegId rs2() const
+    { return m_rs2; }
+
+    RegId rd() const
+    { return m_rd; }
+
+    Word imm() const
+    { return m_imm; }
+
+    InsnId insn() const
+    { return m_insn; }
+
+    bool branch() const
+    { return m_branch; }
 };
 
 
