@@ -15,7 +15,8 @@ template<int high, int low> Word GetBits()
     return (word << low) & (1 << (high - low + 1) - 1);
 }
 
-template<> Word SignExtend(Word wrd)
+template<>
+Word SignExtend(Word wrd)
 {
     //не понял, как эта тема работает, как у вас было тоже вспомнить на смог :(
 }
@@ -77,10 +78,11 @@ public:
 
     void DecodeAndFillFields( Word wrd )
     {
-      m_rs1 = GetBits<19, 15>(wrd);
-      m_rs2 = GetBits<24, 20>(wrd);
-      m_rd = GetBits<11, 7>(wrd);
-      Word funct3 = GetBits<14,12>(wrd);
+        m_rs1 = GetBits<19, 15>(wrd);
+        m_rs2 = GetBits<24, 20>(wrd);
+        m_rd = GetBits<11, 7>(wrd);
+        Word funct3 = GetBits<14,12>(wrd);
+
 
         if (GetBits<6, 0>(wrd) == 0x33)
         {
@@ -88,13 +90,10 @@ public:
 
             if (funct3 == 0 && funct7 == 0)
                 m_insn = ADD;
-
             else if (funct3 == 0 && funct7 == 0x20)
                 m_insn = SUB;
-
             else if (funct3 == 0x3 && funct7 == 0)
                 m_insn = XOR;
-
             else if (funct3 == 0x5 && funct7 == 0)
                 m_insn = OR;
         }
@@ -137,22 +136,22 @@ public:
           m_imm = GetBits<31, 20>(wrd);
 
             if (funct3 == 0x00)
-              m_insn = ADDI;
+                m_insn = ADDI;
             if (funct3 == 0x02)
-              m_insn = SLTI;
+                m_insn = SLTI;
             if (funct3 == 0x03)
-              m_insn = SLTIU;
+                m_insn = SLTIU;
             if (funct3 == 0x04)
-              m_insn = XORI;
+                m_insn = XORI;
             if (funct3 == 0x05)
-              m_insn = ORI;
+                m_insn = ORI;
             if (funct3 == 0x06)
-              m_insn = ANDI;
+                m_insn = ANDI;
         }
     }
 
 
-    void exec( )
+    void exec( ) const
     {
         InsnMap[m_insn]( *this );
     }
@@ -197,7 +196,8 @@ class Memory
 {
 
 public:
-    bool read(Word * result, ...);
+    bool read(RegId r);
+    bool read();
     bool write(Word wrd, ...);
 };
 
