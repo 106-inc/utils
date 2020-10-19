@@ -22,24 +22,31 @@ template<> Word SignExtend(Word wrd)
 
 enum InsnId
 {
-    kAdd,
-    kSub,
-    kLb,
-    kLh,
-    kLw,
-    kLbu,
-    kLhu,
-    kSb,
-    kSh,
-    kSw,
-    kBeq,
-    kBne,
-    kBlt,
-    kBge,
-    kBltu,
-    kBgeu,
-    kInvalidId
+  ADDI, ANDI, SLTI, ORI, XORI,
+
+  ADD, AND, SLT, SLTU, SUB, AND, OR, XOR,
+
+/*
+  kAdd,
+  kSub,
+  kLb,
+  kLh,
+  kLw,
+  kLbu,
+  kLhu,
+  kSb,
+  kSh,
+  kSw,
+  kBeq,
+  kBne,
+  kBlt,
+  kBge,
+  kBltu,
+  kBgeu,
+  kInvalidId
+*/
 };
+
 
 class Instruction
 {
@@ -52,9 +59,23 @@ class Instruction
 
     using do_insn = void(*)(const Instruction &);
 
-    static std::map<InsnId, do_insn> = {
-            {kAdd, ADD}
+    static std::unordered_map<InsnId, do_insn> =
+    {
+            {ADDI, do_ADDI},
+            {ANDI, do_ANDI},
+            {SLTI, do_SLTI},
+            {ORI, do_ORI},
+            {XORI, do_XORI},
+
+            {ADD, doADD},
+            {SUB, do_SUB},
+            {AND, do_AND},
+            {SLT, do_SLT},
+            {SLTU, do_SLTU},
+            {OR, do_OR},
+            {XOR, do_XOR},
     };
+
 
 public:
 
@@ -204,5 +225,69 @@ void(*InsnExecutor[])(Hart* hart, const Instruction& insn) = {
         lh,
         ...};
 
-void add(Hart* hart, const Instruction& insn);
-void sub(Hart* hart, const Instruction& insn);
+        //! Instructions file of emulator RISC - V !//
+
+        //! Integer Register - Immediate instr
+
+
+void do_ADDI(Hart* hart, const Instruction& insn)
+{
+
+}
+
+void do_SLTI(Hart* hart, const Instruction& insn)
+{
+
+}
+
+void do_ANDI(Hart* hart, const Instruction& insn)
+{
+
+}
+
+void do_ORI(Hart* hart, const Instruction& insn)
+{
+
+}
+
+void do_XORI(Hart* hart, const Instruction& insn)
+{
+
+}
+
+//! Integer Register - Register operations
+
+void do_ADD(Hart* hart, const Instruction& insn)
+{
+
+}
+
+void do_SUB(Hart* hart, const Instruction& insn)
+{
+
+}
+
+void do_SLT(Hart* hart, const Instruction& insn)
+{
+
+}
+
+void do_SLTU(Hart* hart, const Instruction& insn)
+{
+
+}
+
+void do_AND(Hart* hart, const Instruction& insn)
+{
+
+}
+
+void do_OR(Hart* hart, const Instruction& insn)
+{
+
+}
+
+void do_XOR(Hart* hart, const Instruction& insn)
+{
+
+}
