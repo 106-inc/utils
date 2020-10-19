@@ -137,22 +137,22 @@ DecodeAndFillFields
         InsnMap[m_insn]( Insn );
     }
 
-    RegId rs1() const
+    const RegId & rs1() const
     { return m_rs1; }
 
-    RegId rs2() const
+    const RegId & rs2() const
     { return m_rs2; }
 
-    RegId rd() const
+    const RegId & rd() const
     { return m_rd; }
 
-    Word imm() const
+    const Word & imm() const
     { return m_imm; }
 
-    InsnId insn() const
+    const InsnId & insn() const
     { return m_insn; }
 
-    bool branch() const
+    const bool & branch() const
     { return m_branch; }
 };
 
