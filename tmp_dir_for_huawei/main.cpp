@@ -47,7 +47,7 @@ class Instruction
     using do_insn = void(*)(const Instruction &);
 
     static std::unordered_map<InsnId, do_insn> =
-    {
+        {
             {ADDI, do_ADDI},
             {ANDI, do_ANDI},
             {SLTI, do_SLTI},
@@ -63,7 +63,7 @@ class Instruction
             {XOR, do_XOR},
 
             //** continued **//
-    };
+        };
 
 
 public:
