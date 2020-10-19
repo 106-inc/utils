@@ -99,7 +99,7 @@ public:
             m_imm = GetBits<31, 20>(wrd);
 
 
-            if (funct3 == 0x00)    m_insn = ;//LB
+            if (funct3 == 0x00)    m_insn = ;// LB
             if (funct3 == 0x01)    m_insn = ;//LH
             if (funct3 == 0x02)    m_insn = ;//LW
             if (funct3 == 0x04)    m_insn = ;//LBU
@@ -184,7 +184,7 @@ class Memory
 {
 
 public:
-    bool read(Word* result, ...);
+    bool read(Word * result, ...);
     bool write(Word wrd, ...);
 };
 
