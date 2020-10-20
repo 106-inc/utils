@@ -123,9 +123,9 @@ void Inst::DecodeAndFillFields( Word wrd )
     }
 }
 
-void Inst::exec( const Hart & ) const
+void Inst::exec( const Hart & hart ) const
 {
-    ops[m_insn]( const Hart &, *this );
+    ops[m_insn]( hart, *this );
 }
 
 
@@ -148,64 +148,64 @@ const bool & Inst::branch() const
 { return m_branch; }
 
 
-void do_ADDI(const Hart &, const Inst & insn)
+void do_ADDI(const Hart & hart, const Inst & insn)
 {
 
 }
 
-void do_SLTI(const Hart &, const Inst & insn)
+void do_SLTI(const Hart & hart, const Inst & insn)
 {
 
 }
 
-void do_ANDI(const Hart &, const Inst & insn)
+void do_ANDI(const Hart & hart, const Inst & insn)
 {
 
 }
 
-void do_ORI(const Hart &, const Inst & insn)
+void do_ORI(const Hart & hart, const Inst & insn)
 {
 
 }
 
-void do_XORI(const Hart &, const Inst & insn)
+void do_XORI(const Hart & hart, const Inst & insn)
 {
 
 }
 
 //! Integer Register - Register operations
 
-void do_ADD(const Hart &, const Inst & insn)
+void do_ADD(const Hart & hart, const Inst & insn)
 {
 
 }
 
-void do_SUB(const Hart &, const Inst & insn)
+void do_SUB(const Hart & hart, const Inst & insn)
 {
 
 }
 
-void do_SLT(const Hart &, const Inst & insn)
+void do_SLT(const Hart & hart, const Inst & insn)
 {
 
 }
 
-void do_SLTU(const Hart &, const Inst & insn)
+void do_SLTU(const Hart & hart, const Inst & insn)
 {
 
 }
 
-void do_AND(const Hart &, const Inst & insn)
+void do_AND(const Hart & hart, const Inst & insn)
 {
 
 }
 
-void do_OR(const Hart &, const Inst & insn)
+void do_OR(const Hart & hart, const Inst & insn)
 {
 
 }
 
-void do_XOR(const Hart &, const Inst & insn)
+void do_XOR(const Hart & hart, const Inst & insn)
 {
 
 }

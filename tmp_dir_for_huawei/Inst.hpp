@@ -10,7 +10,7 @@ class Inst
     InsnId m_insn{InsnId::INV_ID};
     bool m_branch{};
 
-    using do_insn = void(*)(const Hart & , const Inst &);
+    using do_insn = void(*)(const Hart & hart , const Inst &);
 
     static std::unordered_map<InsnId, do_insn> ops;
 
@@ -21,7 +21,7 @@ public:
     Inst( Word wrd );
 
     void DecodeAndFillFields( Word wrd );
-    void exec( const Hart & ) const;
+    void exec( const Hart & hart ) const;
 
 
     const RegId & rs1() const;
@@ -32,21 +32,21 @@ public:
     const bool & branch() const;
 };
 
-void do_ADDI(const Hart &, const Inst & insn);
-void do_SLTI(const Hart &, const Inst & insn);
-void do_ANDI(const Hart &, const Inst & insn);
-void do_ORI (const Hart &, const Inst & insn);
-void do_XORI(const Hart &, const Inst & insn);
+void do_ADDI(const Hart & hart, const Inst & insn);
+void do_SLTI(const Hart & hart, const Inst & insn);
+void do_ANDI(const Hart & hart, const Inst & insn);
+void do_ORI (const Hart & hart, const Inst & insn);
+void do_XORI(const Hart & hart, const Inst & insn);
 
 //! Integer Register - Register operations
 
-void do_ADD (const Hart &, const Inst & insn);
-void do_SUB (const Hart &, const Inst & insn);
-void do_SLT (const Hart &, const Inst & insn);
-void do_SLTU(const Hart &, const Inst & insn);
-void do_AND (const Hart &, const Inst & insn);
-void do_OR  (const Hart &, const Inst & insn);
-void do_XOR (const Hart &, const Inst & insn);
+void do_ADD (const Hart & hart, const Inst & insn);
+void do_SUB (const Hart & hart, const Inst & insn);
+void do_SLT (const Hart & hart, const Inst & insn);
+void do_SLTU(const Hart & hart, const Inst & insn);
+void do_AND (const Hart & hart, const Inst & insn);
+void do_OR  (const Hart & hart, const Inst & insn);
+void do_XOR (const Hart & hart, const Inst & insn);
 /////////////////////////////////////////
 
 
