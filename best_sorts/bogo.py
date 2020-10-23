@@ -2,10 +2,8 @@
 import random
 
 def bogo_sort(data):
-    with open('out.txt', 'w') as file:
-        while any(x > y for x, y in zip(data, data[1:])):
-            file.write(str(data) + '\n')
-            random.shuffle(data)
+    while any(x > y for x, y in zip(data, data[1:])):
+        random.shuffle(data)
 
 print('Input array size: ', end='')
 N = int(input())
