@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import random
 
 def bogo_sort(data):
@@ -6,12 +7,15 @@ def bogo_sort(data):
             file.write(str(data) + '\n')
             random.shuffle(data)
 
-arr = [1, 3, 5, 2, 6, 7, 9, 10, 85, 46, 73, 93, 49]
+print('Input array size: ', end='')
+N = int(input())
+
+arr = []
+for i in range(N):
+    tmp = input()
+    arr.append(int(tmp))
 
 bogo_sort(arr)
-
 print(arr)
-
-
 
 
