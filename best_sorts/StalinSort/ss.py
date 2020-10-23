@@ -1,32 +1,39 @@
+#!/usr/bin/env python3
 from playsound import playsound
 
+
 def Shot():
-  playsound('ss.mp3')
+    playsound('boom.mp3')
+
+
 def Athem():
-  playsound('ss.mp3')
+    playsound('ss.mp3')
+
 
 def StalinSort(arr):
-  new_arr = [arr[0]]
-  for i in range(len(arr), 1):
-    if arr[i] >= arr[i - 1]:
-      new_arr.append(arr[i])
-    else:
-      #Shot()
-      print('Tovarisch ' + str(arr[i]) + 'WAS not a true communist')
+    new_arr = [arr[0]]
+    greatest = arr[0]
+    for i in range(1, len(arr)):
+        if arr[i] < greatest:
+            print('Tovarisch ' + str(arr[i]) + ' WAS not a true communist')
+            Shot()
+        else:
+            new_arr.append(arr[i])
+            greatest = arr[i]
 
+    return new_arr
 
-  return new_arr
 
 arr = []
-print('Input size of array: ', end = '')
+print('Input size of array: ', end='')
 size = int(input())
 
-for i in range(size):
-  arr.append(int(input()))
+for j in range(size):
+    arr.append(int(input()))
 
 arr = StalinSort(arr)
 
 print('Sorted array')
 print(arr)
 print("It's a communism, bitch")
-#Athem()
+Athem()
