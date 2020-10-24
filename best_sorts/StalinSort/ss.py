@@ -15,7 +15,7 @@ def StalinSort(arr):
     greatest = arr[0]
     for i in range(1, len(arr)):
         if arr[i] < greatest:
-            print('Tovarisch ' + str(arr[i]) + ' WAS not a true communist')
+            print('Tovarisch ' + arr[i] + ' WAS not a true communist')
             Shot()
         else:
             new_arr.append(arr[i])
@@ -29,7 +29,7 @@ print('Input size of array:')
 size = int(input())
 
 for j in range(size):
-    arr.append(int(input()))
+    arr.append(input())
 
 arr = StalinSort(arr)
 
