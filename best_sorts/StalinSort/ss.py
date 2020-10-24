@@ -3,11 +3,11 @@ from playsound import playsound
 
 
 def Shot():
-    playsound('boom.mp3')
+    playsound('snd/boom.mp3')
 
 
 def Athem():
-    playsound('ss.mp3')
+    playsound('snd/ss.mp3')
 
 
 def StalinSort(arr):
