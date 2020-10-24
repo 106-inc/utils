@@ -4,11 +4,11 @@
 void StalinSort( std::vector<int> &arr  )
 {
   std::vector<int> new_arr = {arr[0]};
+  int greatest = arr[0];
   for (size_t i = 1; i < arr.size(); ++i)
-  {
-    if (arr[i] >= arr[i - 1])
-      new_arr.push_back(arr[i]);
-  }
+    if (arr[i] >= greatest)
+      new_arr.push_back(arr[i]), greatest = arr[i];
+
   arr = std::move(new_arr);  
 } 
 
