@@ -36,7 +36,8 @@ def lst_to_tex(lst):
 
     columns = ' '.join('| c' for i in range(col_n)) + ' |'
 
-    header = f'\\begin{{tabular}}{{{columns}}}\n\\hline\n'
+    header = f'\\begin{{tabular}}{{{columns}}}\n' \
+             f'\\hline\n'
     footer = '\\end{tabular}\n'
 
     return header + body + footer
