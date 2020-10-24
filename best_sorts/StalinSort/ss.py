@@ -9,9 +9,11 @@ def Shot():
 def Athem():
     playsound('snd/ss.mp3')
 
+
 def Tired():
     playsound('snd/tired_stalin.mp3')
     print('Oh, it was so much work..')
+
 
 def KillPrint(kill_lst):
     print("Missing:")
