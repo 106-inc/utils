@@ -25,7 +25,7 @@ def StalinSort(arr):
 
 
 arr = []
-print('Input size of array: ', end='')
+print('Input size of array:')
 size = int(input())
 
 for j in range(size):
