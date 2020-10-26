@@ -16,13 +16,9 @@ def Tired():
 
 
 def KillPrint(kill_lst):
-    print("Missing:")
-    print(kill_lst)
-    '''
-    for elem in kill_lst:
-        print(elem + ' ', end='')
-    '''
-    # print()
+    print("MISSING:")
+    for i in range(len(kill_lst)):
+        print(str(i+1) + '. ' + kill_lst[i] + ' ❌')
       
 
 def StalinSort(arr):
