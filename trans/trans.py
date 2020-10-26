@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 trans_d = {
     'а': 'a',
     'б': 'b',
