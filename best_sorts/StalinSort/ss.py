@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
+
 from playsound import playsound
+import time
 
 
 def Shot():
@@ -18,7 +20,8 @@ def Tired():
 def KillPrint(kill_lst):
     print("MISSING:")
     for i in range(len(kill_lst)):
-        print(str(i+1) + '. ' + kill_lst[i] + ' ❌')
+        print(str(i+1) + '. ' + kill_lst[i] +
+              ' † ' + time.strftime("%d.%m.%Y") + ' †')
       
 
 def StalinSort(arr):
