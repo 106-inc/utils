@@ -54,7 +54,11 @@ def main():
 
             res = ''
             if let.isupper():
-                res = trans_d[let.lower()].upper()
+                word_len = len(trans_d[let.lower()])
+                
+                res = trans_d[let.lower()][0].upper()
+                if word_len > 1:
+                    res += trans_d[let.lower()][1:word_len]  
             else:
                 res = trans_d[let]
 
