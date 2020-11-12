@@ -28,7 +28,7 @@ Converter from table in ```CSV``` format to ```tex``` code.
 ## graphs_on_py
 Directory for graphics builder on Python:
 
-## graph_2_y_axs 
+* graph_2_y_axs 
 Graph builder with two y-axes on one plane.
 Firstly u should import lib:
   ```bash
@@ -36,9 +36,11 @@ Firstly u should import lib:
   ```
 Input of this program - file.xlsl. You should write number of using sheet in function:
   ```bash
-  read_excel(name_of_file.xlsx, sheet_name = 'Name'
+  read_excel(name_of_file.xlsx, sheet_name = 'Name')
   ```
-
+  
+* graph_for_curve
+As soon as possible
 
 
 
