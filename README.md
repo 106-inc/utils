@@ -25,8 +25,8 @@ Converter from table in ```CSV``` format to ```tex``` code.
 * ```-h```, ```--help``` - show help message and exit.
 * ```-d DELIM```, ```--delim DELIM``` - use ```DELIM``` as column delimeter.
 
-## graph_on_py
+## graphs_on_py
 Directory for graphics builder on Python.
 
-### graph_2_y_axs 
+** graph_2_y_axs 
 Graph builder with two y-axes on one plane.
