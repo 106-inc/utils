@@ -26,9 +26,9 @@ Converter from table in ```CSV``` format to ```tex``` code.
 * ```-d DELIM```, ```--delim DELIM``` - use ```DELIM``` as column delimeter.
 
 ## graphs_on_py
-Directory for graphics builder on Python.
+Directory for graphics builder on Python:
 
-**graph_2_y_axs**:
-* Graph builder with two y-axes on one plane.
+* graph_2_y_axs 
+Graph builder with two y-axes on one plane.
 
 
