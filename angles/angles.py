@@ -14,13 +14,15 @@ class Angle:
         self.deg_ = deg_sum
 
     def __iadd__(self, other):
-        sec_sum = self.sec_ + other.sec_
-        min_sum = self.min_ + other.min_ + (sec_sum // 60)
-        deg_sum = self.deg_ + other.deg_ + (min_sum // 60)
+        sec_sum = self.sec_ + other.sec_ + \
+                  (self.min_ + other.min_) * 60 + \
+                  (self.deg_ + other.deg_) * 3600
 
-        self.sec_ = sec_sum % 60
-        self.min_ = min_sum % 60
-        self.deg_ = deg_sum
+        self.deg_ = sec_sum // 3600
+        sec_sum %= 3600
+        self.min_ = sec_sum // 60
+        sec_sum %= 60
+        self.sec_ = sec_sum
 
         return self
 
@@ -59,10 +61,10 @@ class Angle:
         return self.degrees() / 180 * math.pi
 
 
-a = Angle(30)
-b = Angle(-15)
+a = Angle(2, 10, 20)
+b = Angle(3, 5, 40)
 
-a += b
+a = a - b
 
 
 print('a = ', a)
