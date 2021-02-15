@@ -31,7 +31,8 @@ class Angle:
         return temp
 
     def __isub__(self, other):
-        self += -other
+        self.__iadd__(other)
+        self.__neg__()
 
         return self
 
@@ -44,7 +45,7 @@ class Angle:
     def __neg__(self):
         self.deg_ = -self.deg_
         self.min_ = -self.min_
-        self.sec_ = -self.sec
+        self.sec_ = -self.sec_
 
         return self
 
@@ -62,7 +63,7 @@ class Angle:
 
 
 a = Angle(30)
-b = a + a
+b = a - a
 
 print('a = ', a)
 print(b.degrees())
