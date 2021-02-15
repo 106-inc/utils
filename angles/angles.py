@@ -59,14 +59,3 @@ class Angle:
 
     def radians(self):
         return self.degrees() / 180 * math.pi
-
-
-a = Angle(2, 10, 20)
-b = Angle(3, 5, 40)
-
-a = a - b
-
-
-print('a = ', a)
-print(b.degrees())
-print(b.radians())
