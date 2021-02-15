@@ -31,21 +31,21 @@ class Angle:
         return temp
 
     def __isub__(self, other):
-        """
-        TODO: write
-        """
+        self += -other
+
         return self
 
     def __sub__(self, other):
-        """
-        TODO: write
-        """
+        temp = self
+        temp -= other
+
         return self
 
     def __neg__(self):
-        """
-        TODO: write
-        """
+        self.deg_ = -self.deg_
+        self.min_ = -self.min_
+        self.sec_ = -self.sec
+
         return self
 
     def __str__(self):
