@@ -30,7 +30,7 @@ def lst_to_tex(lst):
     for line in lst:
 
         for idx, word in enumerate(line, 1):
-            body += str(word) + (' & ' if idx != col_n else '')
+            body += '$' + str(word) + '$' + (' & ' if idx != col_n else '')
 
         body += '&' * (col_n - len(line) - 1) + '\\\\\n\\hline\n'
 
