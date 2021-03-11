@@ -17,20 +17,16 @@ def main():
   tex_code = '\\documentclass{scrartcl}\n' + \
               '\\usepackage{pdfpages}\n' + \
               '\\begin{document}\n' +  \
-              '\\includepdf[pages=-,booklet,turn=false,landscape]\n' + \
-              f'{{../{args.in_f}}}\n\\end{{doucument}}\n'
+              '\\includepdf[pages=-,booklet,turn=false,landscape]' + \
+              f'{{../{args.in_f}}}\n\\end{{document}}\n'
 
 
   with open(tex_fname, 'w', encoding='utf-8') as fout:
     fout.write(tex_code)
 
-  os.system('cd build')
-  if not os.system(f'pdflatex {args.out_f}.tex;'):
-    print('pdflatex error')
-    return
+  os.system(f'cd build; pdflatex {args.out_f}.tex > /dev/null; cd ..')
 
-  os.system('cd ../')
-  os.system(f'mv build/{args.out_f} .; rm -rf build')
+  os.system(f'mv build/{args.out_f}.pdf .; rm -rf build')
 
 
 
