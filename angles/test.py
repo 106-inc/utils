@@ -2,8 +2,5 @@
 
 import angles as a
 
-ang = a.Angle(2, 3, 4)
-g = ang
-
-print(ang)
-print(g)
+a1 = a.Angle(1, 25.9)
+print(a1 * 4)

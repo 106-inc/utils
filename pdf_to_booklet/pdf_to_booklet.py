@@ -11,7 +11,7 @@ def main():
 
   args = parser.parse_args()
 
-  os.system('mkdir -p build')
+  os.system('mkdir -p .booklet_build')
 
   tex_fname = f'build/{args.out_f}.tex'
   tex_code = '\\documentclass{scrartcl}\n' + \
@@ -24,9 +24,9 @@ def main():
   with open(tex_fname, 'w', encoding='utf-8') as fout:
     fout.write(tex_code)
 
-  os.system(f'cd build; pdflatex {args.out_f}.tex > /dev/null; cd ..')
+  os.system(f'cd .booklet_build; pdflatex {args.out_f}.tex > /dev/null; cd ..')
 
-  os.system(f'mv build/{args.out_f}.pdf .; rm -rf build')
+  os.system(f'mv  .booklet_build/{args.out_f}.pdf .; rm -rf .booklet_build')
 
 
 
